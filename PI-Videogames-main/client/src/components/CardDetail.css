@@ -1,0 +1,87 @@
+@import url('http://fonts.cdnfonts.com/css/cubicfive');
+
+.conteiner {
+    position: flex;
+    
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 60px;
+}
+
+.title {
+    font-family: 'CubicFive11', sans-serif;
+    font-size: 20px;
+    color: rgb(244, 169, 234);
+    text-shadow: #fff;
+    
+}
+
+.imageAndDescription {
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 30px;
+    display: flex;
+    font-family: 'CubicFive3', sans-serif;
+    font-weight: 40;
+    font-size: 1rem;
+    text-shadow: 2px 0 rgb(50, 3, 46), -2px 0 rgb(50, 3, 46), 0 2px rgb(50, 3, 46), 0 -2px rgb(50, 3, 46),
+        1px 1px rgb(86, 7, 79), -1px -1px rgb(50, 3, 46), 1px -1px rgb(50, 3, 46), -1px 1px rgb(50, 3, 46);
+    color: rgb(246, 239, 243);
+    text-align: justify;  
+}
+.imageAndDescription1 {
+    display: flex;
+    
+}
+
+.imagen {
+    display:inline;
+    position: center;
+    margin-left: 10px;
+    margin-inline: 550px;
+    object-fit: cover;
+}
+
+
+.genres {
+    font-family: 'CubicFive10', sans-serif;
+    height: 20%;
+    width: 20%;
+    color: aliceblue;
+    background-color: blueviolet;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.videogames{
+    font-family: 'CubicFive10', sans-serif;
+    float:none;
+    margin-left: 10px;
+    width: 15%;
+    height: 10%;
+    background-color: rgb(54, 11, 75);
+    color: rgb(250, 250, 250);
+    font-size: 1.1rem;
+}
+
+.goback{
+        position: relative;
+        animation: myAnim 1s ease 0s infinite normal forwards;
+        font-family: 'CubicFive10', sans-serif;      
+        color: rgb(26, 41, 49);            
+        height: 25px;
+        width: 200px;
+        border-radius: 0px;
+        border: 3px solid rgb(113, 61, 217);
+        background-color: rgb(242, 241, 244);
+        background: linear-gradient(90deg, rgb(113, 61, 217) 10%, #fff 100%);
+        margin-top: 10px;
+
+}
+
+
+
+.descri{
+    background-color: rgba(240, 248, 255, 0.462);
+        
+}

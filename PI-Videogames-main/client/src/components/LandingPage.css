@@ -1,0 +1,66 @@
+@import url('http://fonts.cdnfonts.com/css/cubicfive');
+
+.myButton {
+    position: absolute;
+    left: 48%;
+    top: 25%;
+    animation: myAnim 1s ease 0s infinite normal forwards;
+    color:rgb(70, 43, 226)
+}
+
+.MyImage button {
+    font-family: 'CubicFive10', sans-serif;
+    font-size:large;                    
+    height: 60px;
+    width: 180px;
+    border-radius: 0px;
+    border: 3px solid rgb(255, 0, 200);
+    background-color: rgb(70, 194, 228);
+    background: linear-gradient(90deg, rgb(196, 41, 201) 10%, #fff 100%);
+}
+
+@keyframes myAnim {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
+}
+
+.MyImage {
+    background-color: rgb(8, 2, 22);
+
+}
+
+.theImage {
+    width: max-content;
+    height: max-content;
+    background-repeat: repeat;
+    /*Centramos el fondo al centro*/
+    background-position: center;
+    /*Y le decimos que siempre ocupe el ancho y el alto con esto*/
+    background-size: cover;
+    width: 1650px;
+    height: 800px;
+
+}

@@ -1,0 +1,46 @@
+@import url('http://fonts.cdnfonts.com/css/cubicfive');
+
+.nume {
+    font-family: 'CubicFive10', sans-serif;
+    font-size: small;
+    float: left;
+    width: 25%;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-left: 120px;
+    width: 50px;
+    height: 20px;
+    background-color: rgb(236, 151, 214);
+}
+
+
+
+.nume:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 0, 0.721);
+    color: rgb(105, 25, 128);
+}
+
+.prev {
+    font-family: 'CubicFive10', sans-serif;
+    font-size: small;
+    float: left;
+    width: 25%;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-left: 100px;
+    width: 100px;
+    height: 20px;
+}
+
+.next {
+    font-family: 'CubicFive10', sans-serif;
+    font-size: small;
+    float: left;
+    width: 25%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 100px;
+    width: 100px;
+    height: 20px;
+}

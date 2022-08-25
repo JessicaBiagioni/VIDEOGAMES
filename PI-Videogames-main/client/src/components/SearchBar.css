@@ -1,0 +1,35 @@
+@import url('http://fonts.cdnfonts.com/css/cubicfive');
+
+.style {
+    margin-left: 45px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    /* margin-left: 80%; */
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.buttonbuscar {
+    font-family: Arial;
+    border-radius: 10px;
+    margin-left: 2.5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}
+
+.buttonbuscar:hover {
+    transform: scale(1.1);
+    color: white;
+
+}
+
+.input1 {
+    margin-left: 15px;
+    width: 250px;
+    height: 30px;
+}

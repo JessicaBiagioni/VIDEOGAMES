@@ -1,0 +1,63 @@
+@import url('http://fonts.cdnfonts.com/css/cubicfive');
+
+.titulo {
+    margin-top: 12px;
+    font-family: 'CubicFive10', sans-serif;
+    /* font-family: 'CubicFive11', sans-serif;
+    font-family: 'CubicFive12', sans-serif;
+    font-family: 'CubicFive18', sans-serif; */
+    color: rgb(238, 110, 185);
+    font-size: xx-large;
+}
+
+
+.c1 {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+    padding: 10px; */
+    padding-top: 1%;
+    background-size: 100% 100%;
+}
+
+.positions{
+    display:grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 2fr);
+    grid-column-gap:0px;
+    grid-row-gap: 0px ;
+    position:absolute;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+
+.hpbot {
+    font-family: 'CubicFive10', sans-serif;
+    background-color: rgba(238, 110, 185, 0.693);
+    color: whitesmoke;
+}
+
+.hpbot:hover {
+    background-color: rgba(255, 255, 0, 0.857);
+    color: rgb(0, 0, 0);
+}
+
+.hpbot1 {
+    font-family: 'CubicFive10', sans-serif;
+    color: whitesmoke;
+}
+
+.hpbot1:hover {
+    color: yellow;
+}
+
+
+.hpfilter {
+    color: whitesmoke;
+    margin-top: 8px;
+    border: 2px solid black;
+    height: 20px;
+    background-color: rgba(238, 110, 185, 0.716);
+    cursor: grab;
+} 

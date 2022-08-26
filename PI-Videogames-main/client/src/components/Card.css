@@ -34,3 +34,12 @@
     margin-top: 15px;
     margin-bottom: 10px;
 }
+
+.deletebutton{
+    font-family: 'CubicFive10', sans-serif;
+}
+.deletebutton:hover{
+transform: 1.1;
+color: red;
+border-color: red;
+}

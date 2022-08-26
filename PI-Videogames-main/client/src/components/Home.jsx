@@ -60,7 +60,6 @@ const Home = () => {
             dispatch(orderByName(value,"rating"));
         }
         setCurrentPage(1);
-        //tengo que modificar un estado para que se vuelvan a renderizar los videogames, si no, no se renderizan otra vez
         setOrder(`Order ${e.target.value}`);
     };
 

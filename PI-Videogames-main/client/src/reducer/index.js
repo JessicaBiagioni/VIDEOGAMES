@@ -62,7 +62,6 @@ function rootReducer(state = initialState, action) {
                 videogames: videogamesByCreator,
             };
         }
-
         case actionTypes.orderByName: {
             //unifico las comparaciones ascendentes y descendentes por rating o name
             const sortType = action.payload[0];
@@ -86,7 +85,6 @@ function rootReducer(state = initialState, action) {
                     if (a[compareProp] > b[compareProp]) {
                         return -1;
                     }
-
                     if (b[compareProp] > a[compareProp]) {
                         return 1;
                     }
@@ -114,8 +112,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 videogameDetails: action.payload,
             };
+        } case actionTypes.deleteVideogame: {
+            return{
+                ...state,
+                videogames: action.payload,
+            };
         }
-
         case actionTypes.clearVideogameDetails: {
             return {
                 ...state,

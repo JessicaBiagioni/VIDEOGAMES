@@ -12,6 +12,7 @@ export const actionTypes = {
     clearVideogameDetails: "clearVideogameDetails",
     getNameVideogame: "getNameVideogame",
     getPlatforms: "getPlatforms",
+    deleteVideogame: "deleteVideogame"
 };
 
 export const getVideogames = () => {
@@ -124,6 +125,17 @@ export function createVideogame(payload) {
             throw new Error(error);
         }
     };
-}
+};
+
+export function deleteVideogame(id) {
+    return async function(){
+        try {
+            const eliminado = await axios.delete(`http://localhost:3001/videogame/delete/${id}`)
+            return eliminado;
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+};
 
 

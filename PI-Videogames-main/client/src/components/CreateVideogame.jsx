@@ -8,7 +8,7 @@ import "./CreateVideogame.css"
 const CreateVideogame = () => {
   const dispatch = useDispatch();
   const allGenres = useSelector((state) => state.genres);
-  const allPlatforms = useSelector((state)=> state.platforms);
+  const allPlatforms = useSelector((state) => state.platforms);
   const history = useHistory();
   const [errors, setErrors] = useState({});
 
@@ -58,24 +58,36 @@ const CreateVideogame = () => {
     function validate(input) {
       let errors = {};
 
-      if (!/^[a-zA-Z\s]*$/.test(input.nombre)) {
-        errors.name = "You can only use letters";
-      } else if (!input.rating) {
+      if (!input.name) {
+        errors.name = "Name required"
+      // } else if (/^[A-Za-z0-9\s]+$/g.test(input.nombre)) {
+      //   errors.name = "You can only use letters & numbers";
+      }
+      
+      if (!input.rating) {
         errors.rating = "Rating required"
-      } else if (Number(input.rating) > 5 || Number(input.rating) < 1 || isNaN(Number(input.rating))) {
-        errors.rating = "Rating 1 / 5"
-      } else if (!/^(?:[1-9]\d{0,2}(?:,\d{3})*|0)(?:\.\d+)?$/.test(input.rating)) {
-        return alert("Rating should be a number between 1-5")
-      } else if (!input.released) {
+      } else if (Number(input.rating) > 5 || Number(input.rating) < 1) {
+        errors.rating = "Rating 1 / 5"}
+      // } else if(!/^(?:[1-9]\d{0,2}(?:,\d{3})*|0)(?:\.\d+)?$/.test(input.rating)) {
+      //   errors.rating="Rating between 1 / 5"
+      // }
+
+      if (!input.released) {
         errors.released = "Released date is Required"
-      } else if (!input.description) {
+      }
+
+      if (!input.description) {
         errors.description = "Description is Required"
       } else if (input.description.length < 10) {
         errors.description = "Your description is too short, get creative!"
-      } else if (input.genres.length < 1) {
+      }
+
+      if (input.genres.length < 1) {
         errors.genres = "Select a genre"
-      } else if (input.platforms.length < 1) {
-        errors.platforms = "Select a Platform"
+      }
+
+      if (input.platforms.length < 1) {
+        errors.platforms = "Select Platform"
       } return errors;
     }
   }
@@ -115,7 +127,7 @@ const CreateVideogame = () => {
   const handlePlatforms = (e) => {
     e.preventDefault();
     const platform = e.target.value;
-    if (!input.platforms.includes(platform)){
+    if (!input.platforms.includes(platform)) {
       setInput({
         ...input,
         platforms: [...input.platforms, platform]
@@ -123,17 +135,17 @@ const CreateVideogame = () => {
     }
   };
 
-const handleRemovePlatform = (e) => {
-  e.preventDefault();
-  const platformToRemove = e.target.name;
-  setInput({
-    ...input,
-    platforms: input.platforms.filter((platform) =>platform !== platformToRemove),
-  });
-  alert(`Platform ${e.target.name} deleted`);
-}
+  const handleRemovePlatform = (e) => {
+    e.preventDefault();
+    const platformToRemove = e.target.name;
+    setInput({
+      ...input,
+      platforms: input.platforms.filter((platform) => platform !== platformToRemove),
+    });
+    alert(`Platform ${e.target.name} deleted`);
+  }
 
-  
+
   return (
     <div className="fondoform">
 
@@ -195,23 +207,26 @@ const handleRemovePlatform = (e) => {
             className="inputda"
             type="number"
             name="rating"
+            //step="0.01"
+            min={1}
+            max={5}
             autoComplete="off"
             defaultValue={input.rating}
             onChange={(e) => handleFormChange(e)}
           />
           {errors.rating && <p className="error">{errors.rating}</p>}
         </div>
-        
+
         <div className="inputaline1">
           <select className="inputplat" onChange={(e) => handlePlatforms(e)}>
             <option selected disabled>
               Platforms
             </option>
-              {allPlatforms.map((platform) =>(
-                <option
+            {allPlatforms.map((platform) => (
+              <option
                 key={platform}
                 defaultValue={platform}> {platform} </option>
-              ))}
+            ))}
           </select>
           <ul >
             {input.platforms?.map((platform, index) => (

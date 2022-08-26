@@ -39,6 +39,7 @@
     margin-right: 300px;
     background-color: rgba(113, 61, 217, 0.341);
     color: rgb(247, 244, 250);
+    resize:none;
 }
 
 ::placeholder { 

@@ -112,22 +112,28 @@ const CreateVideogame = () => {
     alert(`Genre ${e.target.name} deleted`);
   };
 
-  // const handleCheckbox = (e) => {
-  //   if (e.target.checked) {
-  //     setInput({
-  //       ...input,
-  //       platforms: [...input.platforms, e.target.name],
-  //       //cambio su valor cada vez que toca la checkbox, luego solo me traigo los true al crear el videogame
-  //     });
-  //   } else {
-  //     setInput({
-  //       ...input,
-  //       platforms: input.platforms?.filter((platform) => platform !== e.target.name),
-  //       //cambio su valor cada vez que toca la checkbox, luego solo me traigo los true al crear el videogame
-  //     });
-  //   }
-  // };
+  const handlePlatforms = (e) => {
+    e.preventDefault();
+    const platform = e.target.value;
+    if (!input.platforms.includes(platform)){
+      setInput({
+        ...input,
+        platforms: [...input.platforms, platform]
+      });
+    }
+  };
 
+const handleRemovePlatform = (e) => {
+  e.preventDefault();
+  const platformToRemove = e.target.name;
+  setInput({
+    ...input,
+    platforms: input.platforms.filter((platform) =>platform !== platformToRemove),
+  });
+  alert(`Platform ${e.target.name} deleted`);
+}
+
+  
   return (
     <div className="fondoform">
 
@@ -195,40 +201,31 @@ const CreateVideogame = () => {
           />
           {errors.rating && <p className="error">{errors.rating}</p>}
         </div>
-
-        {/* <div>
-          <label htmlFor="platforms" className="letraslabel">Platforms</label>
-          <div>
-            {videogamesPlatforms.map((platform) => (
-              <label htmlFor="accept" className="inputche" key={platform}>
-                <input type="checkbox"
-                className="inputche"
-                  name={platform}
-                  defaultValue={input.platforms}
-                  onChange={(e) => handleCheckbox(e)} />
-                {platform}
-              </label>
-            ))}
-            {errors.platforms && <p className="error">{errors.platforms}</p>}
-          </div>
-        </div> */}
-        <div>
-          <select>
+        
+        <div className="inputaline1">
+          <select className="inputplat" onChange={(e) => handlePlatforms(e)}>
             <option selected disabled>
               Platforms
             </option>
-            <option>
               {allPlatforms.map((platform) =>(
                 <option
                 key={platform}
                 defaultValue={platform}> {platform} </option>
               ))}
-            </option>
           </select>
+          <ul >
+            {input.platforms?.map((platform, index) => (
+              <li className="lista">
+                <button className="goback1" key={index} name={platform} onClick={(e) => handleRemovePlatform(e)}>
+                  {platform}
+                </button>
+              </li>
+            ))}
+            {errors.platforms && <p className="error">{errors.platforms}</p>}
+          </ul>
         </div>
 
-        <div>
-          {/* <label htmlFor="genres" className="letraslabel">Genres</label> */}
+        <div className="inputaline2">
           <select className="inputgenre" onChange={(e) => handleGenres(e)}>
             <option selected disabled>
               Genres
@@ -249,7 +246,7 @@ const CreateVideogame = () => {
                 </button>
               </li>
             ))}
-            {errors.name && <p className="error">{errors.genres}</p>}
+            {errors.genres && <p className="error">{errors.genres}</p>}
           </ul>
         </div>
         <button className="goback2" type="submit"

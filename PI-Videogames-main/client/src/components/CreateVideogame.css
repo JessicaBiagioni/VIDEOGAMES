@@ -64,7 +64,7 @@
 }
 
 .inputgenre{
-    margin-top: 20px;
+    
     font-family: 'CubicFive11', sans-serif;
     margin-left: 300px;
     margin-right: 300px;
@@ -72,6 +72,16 @@
     background-color: rgba(113, 61, 217, 0.699);
     color: rgb(247, 244, 250);
     
+}
+
+.inputplat{
+    margin-top: 40px;
+    font-family: 'CubicFive11', sans-serif;
+    margin-left: 300px;
+    margin-right: 300px;
+    width: 250px;
+    background-color: rgba(113, 61, 217, 0.699);
+    color: rgb(247, 244, 250);
 }
 
 .goback1{

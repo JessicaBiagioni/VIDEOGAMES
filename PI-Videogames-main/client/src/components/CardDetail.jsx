@@ -16,27 +16,10 @@ const CardDetails = () => {
         };
     }, [dispatch, idVideogame]);
 
-    const parseDescription = (description) => {
-        let parsed = "";
-        let copiar = true;
-        for (let i = 0; i < description.length; i++) {
-            if (description.charAt(i) === "<") {
-                copiar = false;
-            }
-            if (copiar) {
-                parsed += description.charAt(i);
-            }
-            if (description.charAt(i) === ">") {
-                copiar = true;
-            }
-        }
-        return parsed;
-    };
-
     return videogame && videogame.image ? (
 
         <div className="conteiner">
-            <div className="goback1"><Link to="/home">
+            <div className="botonatras"><Link to="/home">
                 <button className="goback">Go back</button>
             </Link></div>
             <div className="title">
@@ -44,14 +27,14 @@ const CardDetails = () => {
                 <h4>{videogame.released}</h4>
             </div>
             <div className="title">
-                <h3>{videogame.rating}/5</h3>
+                <h3>{videogame.rating}/5 <img className="gifimage" src="http://25.media.tumblr.com/c7962f0a224f88f965e375a33953a8c5/tumblr_msh4mj2arL1scncwdo1_500.gif" alt="img nopt foung" /></h3>
             </div>
             <div className="imageAndDescription1">
                 <img className="imagen" src={videogame.image} alt="videogame" width="400px" height="200px" />
             </div>
             <div className="imageAndDescription">
-                <p className="descri">{parseDescription(videogame.description)}</p>
-                {/* <h3>Details</h3> */}
+                <p className="descri">{videogame.description}</p>
+                <p>{videogame.createdInDb ? videogame.description : false} </p>
             </div>
             <div>
                 {videogame.platforms?.map((platform, index) => {

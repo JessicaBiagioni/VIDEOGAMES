@@ -65,10 +65,8 @@
 }
 
 .goback{
-        position: relative;
         animation: myAnim 1s ease 0s infinite normal forwards;
-        font-family: 'CubicFive10', sans-serif;      
-        color: rgb(26, 41, 49);            
+        font-family: 'CubicFive10', sans-serif;                 
         height: 25px;
         width: 200px;
         border-radius: 0px;
@@ -79,7 +77,10 @@
 
 }
 
-
+.gifimage{
+width: 25px;
+height: 25px;
+}
 
 .descri{
     background-color: rgba(240, 248, 255, 0.462);

@@ -124,7 +124,7 @@ const videogameDetails = async (req, res) => {
             );
             const videogameDetails = {
                 name: detailsRequest.data.name,
-                description: detailsRequest.data.description,
+                description: detailsRequest.data.description_raw,
                 image: detailsRequest.data.background_image,
                 platforms: detailsRequest.data.parent_platforms,
                 genres: detailsRequest.data.genres.map((genre) => genre.name), //Mostrarlos de otra forma
@@ -171,11 +171,45 @@ const createVideogame = async (req, res) => {
     }
 };
 
+const deleteVideogame = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (isNaN(id)) {
+            //es uno de mi DB, ya que yo uso un hash alfanumerico en el id
+            const deleteResponse = await Videogame.destroy({
+                where: { id: id },
+            });
+            //actualizo mi DB:
+            getAllVideogames();
+            if (deleteResponse) {
+                return res.status(200).json("Videogame deleted successfully");
+            } else {
+                return res.status(404).send("Videogame not found");
+            }
+        } else {
+            return res.status(404).send("Invalid id");
+        }
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
+const updateVideogame = async (req, res, next) => {
+    
+        const { id } = req.params;
+        const videogames = req.body;
+        return  Videogame.update(videogames, {
+            where: {id}
+        })
+        .then((updateVideogame)=>{
+            res.send(updateVideogame)
+        })
+        .catch((error)=>next(error))
+    }
 
 
 
-
-module.exports = { videogameDetails, listGenres, createVideogame, listVideogames, listPlatforms } //nombreVideogame
+module.exports = { videogameDetails, listGenres, createVideogame, listVideogames, listPlatforms, deleteVideogame, updateVideogame } //nombreVideogame
 
 // const nombreVideogame = async (req, res) => {
 //     try {

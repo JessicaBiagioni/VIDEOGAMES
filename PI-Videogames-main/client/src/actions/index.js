@@ -11,7 +11,7 @@ export const actionTypes = {
     getDetails: "getDetails",
     clearVideogameDetails: "clearVideogameDetails",
     getNameVideogame: "getNameVideogame",
-    getPlatforms: "getPlatforms"
+    getPlatforms: "getPlatforms",
 };
 
 export const getVideogames = () => {

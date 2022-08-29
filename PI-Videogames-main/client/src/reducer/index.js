@@ -26,20 +26,21 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 genres: action.payload,
             };
-        } case actionTypes.getPlatforms: {
+        } 
+        case actionTypes.getPlatforms: {
             return {
                 ...state,
                 platforms: action.payload,
             };
         }
-        case actionTypes.getNameVideogame:{
+        case actionTypes.getNameVideogame: {
             console.log(action.payload)
             const gameName = state.immutableVideogames
             let ret = gameName.filter(v => {
-                return v.name.toLowerCase().includes(action.payload.toLowerCase())  
+                return v.name.toLowerCase().includes(action.payload.toLowerCase())
             })
             ret = ret.slice(0, 15)
-            return{
+            return {
                 ...state,
                 videogames: ret
             }
@@ -112,8 +113,9 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 videogameDetails: action.payload,
             };
-        } case actionTypes.deleteVideogame: {
-            return{
+        }
+        case actionTypes.deleteVideogame: {
+            return {
                 ...state,
                 videogames: action.payload,
             };

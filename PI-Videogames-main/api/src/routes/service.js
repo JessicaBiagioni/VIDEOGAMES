@@ -21,10 +21,6 @@ const getApiInfo = async () => {
     }));
 };
 
-
-
-
-
 const getDbInfo = async () => {
     return await Videogame.findAll({
         include: {
@@ -127,7 +123,7 @@ const videogameDetails = async (req, res) => {
                 description: detailsRequest.data.description_raw,
                 image: detailsRequest.data.background_image,
                 platforms: detailsRequest.data.parent_platforms,
-                genres: detailsRequest.data.genres.map((genre) => genre.name), //Mostrarlos de otra forma
+                genres: detailsRequest.data.genres.map((genre) => genre.name), 
                 rating: detailsRequest.data.rating,
                 released: detailsRequest.data.released,
             };

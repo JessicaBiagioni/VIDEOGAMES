@@ -19,11 +19,11 @@ module.exports = (sequelize) => {
       allowNull:true,
     },
     released:{
-      type: DataTypes.STRING, //EN LA API ES STRING Y NO DATE
+      type: DataTypes.INTEGER, 
       allowNull: true,
     },
     rating:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     platforms:{

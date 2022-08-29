@@ -12,7 +12,7 @@ export const actionTypes = {
     clearVideogameDetails: "clearVideogameDetails",
     getNameVideogame: "getNameVideogame",
     getPlatforms: "getPlatforms",
-    deleteVideogame: "deleteVideogame"
+    deleteVideogame: "deleteVideogame",
 };
 
 export const getVideogames = () => {
@@ -69,12 +69,14 @@ export const filterVideogamesByGenre = (genre) => {
     };
 };
 
+
 export const filterVideogamesByCreator = (creator) => {
     return {
         type: actionTypes.filterByCreator,
         payload: creator,
     };
 };
+
 
 // Recibo un orderType, asc o desc y compareProp es la propiedad
 // la cual voy a comparar, ya sea name o rating

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogames, getGenres, filterVideogamesByGenre, filterVideogamesByCreator, orderByName } from "../actions";
+import { getVideogames, getGenres, filterVideogamesByGenre, filterVideogamesByCreator, orderByName} from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginado";
@@ -57,7 +57,7 @@ const Home = () => {
         if (value === "A-Z" || value === "Z-A") {
             dispatch(orderByName(value, "name"));
         } else {
-            dispatch(orderByName(value,"rating"));
+            dispatch(orderByName(value, "rating"));
         }
         setCurrentPage(1);
         setOrder(`Order ${e.target.value}`);
@@ -70,6 +70,7 @@ const Home = () => {
                 <Link className="hpbot1" to="/create">CREATE VIDEOGAME</Link>
                 <h1 className="titulo">VIDEOGAMES</h1>
                 <button className="hpbot" onClick={(e) => { handleClickReload(e) }}>RELOAD GAMES</button>
+
                 <div>
                     <select className="hpfilter" onChange={(e) => handleOrderByName(e)}>
                         <option selected disabled>
@@ -102,19 +103,19 @@ const Home = () => {
                     />
                 </div>
                 <div className="positions">
-                {currentVideoGames && currentVideoGames?.map((videogame, index) => {
-                    console.log(index, videogame)
-                    return (
-                        <Card
-                            createdInDb={videogame.createdInDb}
-                            key={index}
-                            name={videogame.name}
-                            image={videogame.image}
-                            genres={videogame.genres}
-                            id={videogame.id}
-                        />
-                    );
-                })}</div>
+                    {currentVideoGames && currentVideoGames?.map((videogame, index) => {
+                        console.log(index, videogame)
+                        return (
+                            <Card
+                                createdInDb={videogame.createdInDb}
+                                key={index}
+                                name={videogame.name}
+                                image={videogame.image}
+                                genres={videogame.genres}
+                                id={videogame.id}
+                            />
+                        );
+                    })}</div>
             </div>
         </div>
     )

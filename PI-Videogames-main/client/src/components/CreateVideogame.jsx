@@ -60,32 +60,28 @@ const CreateVideogame = () => {
 
       if (!input.name) {
         errors.name = "Name required"
-      // } else if (/^[A-Za-z0-9\s]+$/g.test(input.nombre)) {
-      //   errors.name = "You can only use letters & numbers";
+        // } else if (/^[A-Za-z0-9\s]+$/g.test(input.nombre)) {
+        //   errors.name = "You can only use letters & numbers";
       }
-      
+
       if (!input.rating) {
         errors.rating = "Rating required"
       } else if (Number(input.rating) > 5 || Number(input.rating) < 1) {
-        errors.rating = "Rating 1 / 5"}
-      // } else if(!/^(?:[1-9]\d{0,2}(?:,\d{3})*|0)(?:\.\d+)?$/.test(input.rating)) {
-      //   errors.rating="Rating between 1 / 5"
-      // }
-
+        errors.rating = "Rating number between 1 / 5"
+      } if (/[,.]/.test(input.rating)) {
+        errors.rating = 'Wrong format for Rating. Should be a number between 0-5'
+      }
       if (!input.released) {
         errors.released = "Released date is Required"
       }
-
       if (!input.description) {
         errors.description = "Description is Required"
       } else if (input.description.length < 10) {
         errors.description = "Your description is too short, get creative!"
       }
-
       if (input.genres.length < 1) {
         errors.genres = "Select a genre"
       }
-
       if (input.platforms.length < 1) {
         errors.platforms = "Select Platform"
       } return errors;

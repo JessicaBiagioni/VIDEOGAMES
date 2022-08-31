@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogames, getGenres, filterVideogamesByGenre, filterVideogamesByCreator, orderByName} from "../actions";
+import { getVideogames, getGenres, filterVideogamesByGenre, filterVideogamesByCreator, orderByName } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginado";
@@ -21,6 +21,7 @@ const Home = () => {
     const indexOfLastVideoGame = currentPage * videoGamesPerPage;
     const indexOfFirstVideoGame = indexOfLastVideoGame - videoGamesPerPage;
     const currentVideoGames = allVideogames.slice(indexOfFirstVideoGame, indexOfLastVideoGame);
+    const [loaded, setLoaded] = useState(allVideogames.length ? true : false)
 
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -29,9 +30,10 @@ const Home = () => {
     //tenga los videogames y genres de la API y DB:
 
     useEffect(() => {
-        dispatch(getVideogames());
+        if (!loaded)
+            dispatch(getVideogames());
         dispatch(getGenres());
-    }, [dispatch]);
+    }, [loaded, dispatch]);
 
     function handleClickReload(e) {
         e.preventDefault();
@@ -70,7 +72,6 @@ const Home = () => {
                 <Link className="hpbot1" to="/create">CREATE VIDEOGAME</Link>
                 <h1 className="titulo">VIDEOGAMES</h1>
                 <button className="hpbot" onClick={(e) => { handleClickReload(e) }}>RELOAD GAMES</button>
-
                 <div>
                     <select className="hpfilter" onChange={(e) => handleOrderByName(e)}>
                         <option selected disabled>

@@ -26,7 +26,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 genres: action.payload,
             };
-        } 
+        }
         case actionTypes.getPlatforms: {
             return {
                 ...state,
@@ -37,7 +37,7 @@ function rootReducer(state = initialState, action) {
             console.log(action.payload)
             const gameName = state.immutableVideogames
             let ret = gameName.filter(v => {
-                return v.name.toLowerCase().includes(action.payload.toLowerCase())
+                return v.name.toLowerCase().trim().includes(action.payload.toLowerCase().trim())
             })
             ret = ret.slice(0, 15)
             return {
@@ -53,7 +53,6 @@ function rootReducer(state = initialState, action) {
                 videogames: videogamesByGenres, //immutableVideogames nunca lo modifico, lo uso como auxiliar
             };
         }
-
         case actionTypes.filterByCreator: {
             const allVideogames = state.immutableVideogames;
             const createdByUser = action.payload === "user" ? true : undefined; //los de la api no tienen la propiedad createdInDB, por eso el undefined

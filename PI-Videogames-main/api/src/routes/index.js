@@ -19,6 +19,8 @@ router.get("/genres", listGenres);
 router.post("/videogames", createVideogame);
 
 router.delete("/videogame/delete/:id", deleteVideogame);
-router.put("videogame/update/:id", updateVideogame )
+
+
+//router.put("/update", updateVideogame )
 
 module.exports = router;

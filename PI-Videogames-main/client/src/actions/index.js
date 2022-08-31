@@ -69,7 +69,6 @@ export const filterVideogamesByGenre = (genre) => {
     };
 };
 
-
 export const filterVideogamesByCreator = (creator) => {
     return {
         type: actionTypes.filterByCreator,

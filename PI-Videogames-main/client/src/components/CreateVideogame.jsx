@@ -107,6 +107,8 @@ const CreateVideogame = () => {
     }
   };
 
+//[...new Set([...input.genres,e.target.value])]
+//genres:[...new Set([...input.genres,e.target.value])]
 
   const handleRemoveGenre = (e) => {
     e.preventDefault();

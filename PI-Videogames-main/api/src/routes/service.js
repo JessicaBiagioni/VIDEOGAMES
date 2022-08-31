@@ -123,7 +123,7 @@ const videogameDetails = async (req, res) => {
                 description: detailsRequest.data.description_raw,
                 image: detailsRequest.data.background_image,
                 platforms: detailsRequest.data.parent_platforms,
-                genres: detailsRequest.data.genres.map((genre) => genre.name), 
+                genres: detailsRequest.data.genres.map((genre) => genre.name),
                 rating: detailsRequest.data.rating,
                 released: detailsRequest.data.released,
             };
@@ -190,22 +190,29 @@ const deleteVideogame = async (req, res) => {
     }
 };
 
-const updateVideogame = async (req, res, next) => {
-    
-        const { id } = req.params;
-        const videogames = req.body;
-        return  Videogame.update(videogames, {
-            where: {id}
-        })
-        .then((updateVideogame)=>{
-            res.send(updateVideogame)
-        })
-        .catch((error)=>next(error))
-    }
 
 
+module.exports = { videogameDetails, listGenres, createVideogame, listVideogames, listPlatforms, deleteVideogame,  } //nombreVideogame, updateVideogame
 
-module.exports = { videogameDetails, listGenres, createVideogame, listVideogames, listPlatforms, deleteVideogame, updateVideogame } //nombreVideogame
+
+// const updateVideogame = async (req, res) => {
+// try {
+//     const {id, name, description, rating} = req.body;
+//     console.log(id, name);
+//     await Videogame.update(
+//         {
+//             name,
+//             description,
+//             rating,
+//         },
+//         {where: {name}}
+//     );
+//     res.status(200).send("Videogame updated")
+// } catch (error) {
+//     res.status(400).send(error.message)
+// }
+// }
+
 
 // const nombreVideogame = async (req, res) => {
 //     try {

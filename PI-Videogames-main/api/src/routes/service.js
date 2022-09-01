@@ -62,11 +62,32 @@ const listVideogames = async (req, res) => {
     }
 };
 
+const nombreVideogame = async (req, res) => {
+    try {
+        const {name} = req.params;
+        const apiName = await axios.get(`https://api.rawg.io/api/games?key=75b3c28277a445df90ba2fa142bd65c0&search=${name}`);
+        let result
+        if (name) {
+        result = apiName.data.results.map((game) => ({
+                id: game.id,
+                image: game.background_image,
+                genres: game.genres?.map((genre) => genre.name),
+                rating: game.rating,
+            }))}
+            console.log(result)
+            result = result.slice(0, 15)
+            res.status(201).send(result);
+    } catch (e) {
+        console.log(e)
+        res.status(404).send("no funciona")
+    }
+};
+
 const getPlatforms = async () => {
     const apiPlat = await axios.get("https://api.rawg.io/api/platforms/lists/parents?key=75b3c28277a445df90ba2fa142bd65c0")
     const apiPlatMap = apiPlat.data.results.map(v => v.name)
     return apiPlatMap
-}
+};
 
 const listPlatforms = async (req, res) => {
     try {
@@ -75,7 +96,7 @@ const listPlatforms = async (req, res) => {
     } catch (e) {
         res.status(400).send(error.message)
     }
-}
+};
 
 const getGenres = async () => {
     const apiGenres = await axios.get("https://api.rawg.io/api/genres?key=75b3c28277a445df90ba2fa142bd65c0");
@@ -167,6 +188,7 @@ const createVideogame = async (req, res) => {
     }
 };
 
+
 const deleteVideogame = async (req, res) => {
     try {
         const { id } = req.params;
@@ -192,44 +214,25 @@ const deleteVideogame = async (req, res) => {
 
 
 
-module.exports = { videogameDetails, listGenres, createVideogame, listVideogames, listPlatforms, deleteVideogame,  } //nombreVideogame, updateVideogame
+const updateVideogame = async (req, res) => {
+try {
+    const {id, name, description, rating} = req.body;
+    console.log(id, name);
+    await Videogame.update(
+        {
+            name,
+            description,
+            rating,
+        },
+        {where: {name}}
+    );
+    res.status(200).send("Videogame updated")
+} catch (error) {
+    res.status(400).send(error.message)
+}
+};
 
 
-// const updateVideogame = async (req, res) => {
-// try {
-//     const {id, name, description, rating} = req.body;
-//     console.log(id, name);
-//     await Videogame.update(
-//         {
-//             name,
-//             description,
-//             rating,
-//         },
-//         {where: {name}}
-//     );
-//     res.status(200).send("Videogame updated")
-// } catch (error) {
-//     res.status(400).send(error.message)
-// }
-// }
+module.exports = { videogameDetails, listGenres, createVideogame, listVideogames, listPlatforms, deleteVideogame, nombreVideogame, updateVideogame }
 
 
-// const nombreVideogame = async (req, res) => {
-//     try {
-//         const {name} = req.params;
-//         const apiName = await axios.get(`https://api.rawg.io/api/games?key=75b3c28277a445df90ba2fa142bd65c0&search=${name}`);
-//         let result
-//         if (name) {
-//         result = apiName.data.results.map((game) => ({
-//                 id: game.id,
-//                 image: game.background_image,
-//                 genres: game.genres?.map((genre) => genre.name),
-//                 rating: game.rating,
-//             }))}
-//             console.log(result)
-//             res.status(201).send(result);
-//     } catch (e) {
-//         console.log(e)
-//         res.status(404).send("no funciona")
-//     }
-// }

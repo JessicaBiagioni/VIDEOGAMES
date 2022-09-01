@@ -36,13 +36,19 @@ function rootReducer(state = initialState, action) {
         case actionTypes.getNameVideogame: {
             console.log(action.payload)
             const gameName = state.immutableVideogames
-            let ret = gameName.filter(v => {
+            let nameVi = gameName.filter(v => {
                 return v.name.toLowerCase().trim().includes(action.payload.toLowerCase().trim())
             })
-            ret = ret.slice(0, 15)
-            return {
-                ...state,
-                videogames: ret
+            if (nameVi.length > 0) {
+                return {
+                    ...state,
+                    videogames: nameVi
+                }
+            } else {
+                return {
+                    ...state,
+                    videogames:state.immutableVideogames
+                }
             }
         }
         case actionTypes.filterByGenre: {
@@ -66,8 +72,7 @@ function rootReducer(state = initialState, action) {
             //unifico las comparaciones ascendentes y descendentes por rating o name
             const sortType = action.payload[0];
             const compareProp = action.payload[1];
-            const allVideogames = state.immutableVideogames;
-            //const allVideogames = state.videogames;
+            const allVideogames = state.immutableVideogames; //videogames
             let sortedVideogames = [];
             if (sortType === "A-Z" || sortType === "0-5") {
                 //Ascendente

@@ -45,17 +45,15 @@ export const getPlatforms = () => {
     }
 }
 
-export const getNameVideogame =(name)=>{
-    return async function (dispatch){
-        try{
-            // var result = await axios.get(`http://localhost:3001/videogames?name=${name}`);
-            // console.log(result.data);
+export const getNameVideogame = (name) => {
+    return async function (dispatch) {
+        try {
             return dispatch({
                 type: actionTypes.getNameVideogame,
                 payload: name
             })
-        } catch (error){
-            return error
+        } catch (error) {
+            return alert("Doesn't exist")
         }
     }
 }
@@ -129,7 +127,7 @@ export function createVideogame(payload) {
 };
 
 export function deleteVideogame(id) {
-    return async function(){
+    return async function () {
         try {
             const eliminado = await axios.delete(`http://localhost:3001/videogame/delete/${id}`)
             return eliminado;

@@ -63,7 +63,6 @@ const CreateVideogame = () => {
         // } else if (/^[A-Za-z0-9\s]+$/g.test(input.nombre)) {
         //   errors.name = "You can only use letters & numbers";
       }
-
       if (!input.rating) {
         errors.rating = "Rating required"
       } else if (Number(input.rating) > 5 || Number(input.rating) < 1) {
@@ -107,8 +106,8 @@ const CreateVideogame = () => {
     }
   };
 
-//[...new Set([...input.genres,e.target.value])]
-//genres:[...new Set([...input.genres,e.target.value])]
+  //[...new Set([...input.genres,e.target.value])]
+  //genres:[...new Set([...input.genres,e.target.value])]
 
   const handleRemoveGenre = (e) => {
     e.preventDefault();

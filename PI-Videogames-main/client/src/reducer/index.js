@@ -4,8 +4,8 @@ const initialState = {
     immutableVideogames: [],
     videogames: [],
     genres: [],
-    videogameDetails: [],
     platforms: [],
+    videogameDetails: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -39,16 +39,9 @@ function rootReducer(state = initialState, action) {
             let nameVi = gameName.filter(v => {
                 return v.name.toLowerCase().trim().includes(action.payload.toLowerCase().trim())
             })
-            if (nameVi.length > 0) {
-                return {
-                    ...state,
-                    videogames: nameVi
-                }
-            } else {
-                return {
-                    ...state,
-                    videogames:state.immutableVideogames
-                }
+            return {
+                ...state,
+                videogames: nameVi
             }
         }
         case actionTypes.filterByGenre: {
@@ -122,12 +115,6 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 videogames: action.payload,
-            };
-        }
-        case actionTypes.clearVideogameDetails: {
-            return {
-                ...state,
-                videogameDetails: [],
             };
         }
         default:

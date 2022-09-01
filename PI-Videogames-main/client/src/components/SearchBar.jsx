@@ -5,7 +5,7 @@ import { getNameVideogame } from "../actions"
 import "./SearchBar.css"
 
 
-const SearchBar = ({ setCurrentPage }) => {
+const SearchBar = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState("")
 
@@ -19,7 +19,6 @@ const SearchBar = ({ setCurrentPage }) => {
         if (!name) return alert("Write a videogame's name");
         dispatch(getNameVideogame(name));
         setName("")
-        setCurrentPage(1)
     }
     
     return (

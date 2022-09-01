@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails, clearVideogameDetails } from "../actions";
+import { getDetails } from "../actions";
 import "./CardDetail.css"
 
 const CardDetails = () => {
@@ -11,9 +11,6 @@ const CardDetails = () => {
 
     useEffect(() => {
         dispatch(getDetails(idVideogame)); //cuando se monta
-        return () => {
-            dispatch(clearVideogameDetails());
-        };
     }, [dispatch, idVideogame]);
 
     return videogame && videogame.image ? (

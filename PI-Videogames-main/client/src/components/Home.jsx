@@ -67,7 +67,7 @@ const Home = () => {
 
     return (
         <div className="c1">
-            <SearchBar setCurrentPage={setCurrentPage} />
+            <SearchBar/>
             <div className="c2">
                 <Link className="hpbot1" to="/create">CREATE VIDEOGAME</Link>
                 <h1 className="titulo">VIDEOGAMES</h1>

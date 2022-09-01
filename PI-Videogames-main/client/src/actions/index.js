@@ -9,7 +9,6 @@ export const actionTypes = {
     filterVideogamesByName: "filterVideogamesByName",
     createVideogame: "createVideogame",
     getDetails: "getDetails",
-    clearVideogameDetails: "clearVideogameDetails",
     getNameVideogame: "getNameVideogame",
     getPlatforms: "getPlatforms",
     deleteVideogame: "deleteVideogame",
@@ -105,12 +104,6 @@ export function getDetails(id) {
         }
     };
 }
-
-export const clearVideogameDetails = () => {
-    return {
-        type: actionTypes.clearVideogameDetails,
-    };
-};
 
 export function createVideogame(payload) {
     return async function () {

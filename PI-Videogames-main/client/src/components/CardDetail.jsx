@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails } from "../actions";
+import { getDetails, clearVideogameDetails } from "../actions";
 import "./CardDetail.css"
 
 const CardDetails = () => {
@@ -11,6 +11,7 @@ const CardDetails = () => {
 
     useEffect(() => {
         dispatch(getDetails(idVideogame)); //cuando se monta
+        return () => {dispatch(clearVideogameDetails())}
     }, [dispatch, idVideogame]);
 
     return videogame && videogame.image ? (
@@ -31,7 +32,7 @@ const CardDetails = () => {
             </div>
             <div className="imageAndDescription">
                 <p className="descri">{videogame.description}</p>
-                <p>{videogame.createdInDb ? videogame.description : false} </p>
+                
             </div>
             <div>
                 {videogame.platforms?.map((platform, index) => {

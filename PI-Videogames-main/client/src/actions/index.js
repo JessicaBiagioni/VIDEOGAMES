@@ -12,11 +12,12 @@ export const actionTypes = {
     getNameVideogame: "getNameVideogame",
     getPlatforms: "getPlatforms",
     deleteVideogame: "deleteVideogame",
+    clearVideogameDetails: "clearVideogameDetails"
 };
 
 export const getVideogames = () => {
     return async function (dispatch) {
-        var json = await axios.get(`http://localhost:3001/videogames`);
+        var json = await axios.get(`/videogames`);
         return dispatch({
             type: actionTypes.getVideogames,
             payload: json.data,
@@ -26,7 +27,7 @@ export const getVideogames = () => {
 
 export const getGenres = () => {
     return async function (dispatch) {
-        var json = await axios.get(`http://localhost:3001/genres`);
+        var json = await axios.get(`/genres`);
         return dispatch({
             type: actionTypes.getGenres,
             payload: json.data,
@@ -36,7 +37,7 @@ export const getGenres = () => {
 
 export const getPlatforms = () => {
     return async function (dispatch) {
-        var json = await axios.get(`http://localhost:3001/platforms`);
+        var json = await axios.get(`/platforms`);
         return dispatch({
             type: actionTypes.getPlatforms,
             payload: json.data,
@@ -94,7 +95,7 @@ export const filterVideogamesByName = (name) => {
 export function getDetails(id) {
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/videogame/${id}`);
+            var json = await axios.get(`/videogame/${id}`);
             return dispatch({
                 type: actionTypes.getDetails,
                 payload: json.data,
@@ -109,7 +110,7 @@ export function createVideogame(payload) {
     return async function () {
         try {
             //console.log("intento hacer el post");
-            const creado = await axios.post("http://localhost:3001/videogames", payload);
+            const creado = await axios.post("/videogames", payload);
             //console.log("post realizado exitosamente");
             return creado;
         } catch (error) {
@@ -122,7 +123,7 @@ export function createVideogame(payload) {
 export function deleteVideogame(id) {
     return async function () {
         try {
-            const eliminado = await axios.delete(`http://localhost:3001/videogame/delete/${id}`)
+            const eliminado = await axios.delete(`/videogame/delete/${id}`)
             return eliminado;
         } catch (error) {
             throw new Error(error)
@@ -130,4 +131,10 @@ export function deleteVideogame(id) {
     }
 };
 
+
+export const clearVideogameDetails = () => {
+    return {
+        type: actionTypes.clearVideogameDetails
+    }
+}
 

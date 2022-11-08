@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import {store} from "./store";
 import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 axios.defaults.baseURL = "https://videogames-production.up.railway.app" || "http://localhost:3001";
 ReactDOM.render(
   <Provider store={store}>

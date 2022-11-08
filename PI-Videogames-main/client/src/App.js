@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, } from "react-router-dom";//Switch
 import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import CreateVideogame from "./components/CreateVideogame";
@@ -9,12 +9,12 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-    <Switch>
+    {/* <Switch> */}
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/create" component={CreateVideogame} />
         <Route exact path="/detail/:idVideogame" component={CardDetail} />
-      </Switch>
+      {/* </Switch> */}
     </div>
     </BrowserRouter>
   );
